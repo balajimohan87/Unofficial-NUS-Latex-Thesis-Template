@@ -1,0 +1,104 @@
+%% Created by Balaji Mohan, PhD, National University of Singapore
+%% based on NUS Guidelines on Format of Research Thesis Submitted For Examination
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,english]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1.5in,rmargin=1in}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[numbers]{natbib}
+\usepackage{nomencl}
+% the following is useful when we have the old nomencl.sty package
+\providecommand{\printnomenclature}{\printglossary}
+\providecommand{\makenomenclature}{\makeglossary}
+\makenomenclature
+\doublespacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{fancyhdr}
+\usepackage{epigraph}
+%\usepackage[Bjarne]{fncychap}
+\usepackage[nogrey,times]{quotchap}
+\usepackage[plainpages=false,pdfpagelabels]{hyperref}
+\fancyfoot{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\nouppercase{\small{\rightmark}}}
+\fancyhead[RE]{\nouppercase{\small{\leftmark}}}
+ %\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}% Default \headrulewidth is 0.4pt
+\renewcommand{\footrulewidth}{0pt}% Default \footrulewidth is 0pt
+\usepackage{pdflscape}
+%\usepackage{numcompress}
+\usepackage{tocbibind}
+\usepackage{titlesec}
+\tolerance=2000
+\emergencystretch=20pt
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\vspace*{\fill}
+\begin{center}
+This page was intentionally left blank.
+\end{center}
+\vspace{\fill}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\raggedbottom
+
+
+\def\nompreamble{\addcontentsline{toc}{chapter}{\nomname}\markboth{\nomname}{\nomname}}
+
+\usepackage{ifthen}
+
+% Sets up the nomenclature page
+\renewcommand\nomlabelwidth{3cm}
+\newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+
+\renewcommand{\nomgroup}[1]{%
+\ifthenelse{\equal{#1}{Z}}{\item[\textbf{Abbreviations}]}{%
+\ifthenelse{\equal{#1}{G}}{\item[\textbf{Greek Symbols}]}{%
+\ifthenelse{\equal{#1}{C}}{\item[\textbf{Roman Symbols}]}{%
+\ifthenelse{\equal{#1}{S}}{\item[\textbf{Subscripts}]}{%
+\ifthenelse{\equal{#1}{k}}{\item[\textbf{Mathematical Symbols}]}
+{}
+}% matches mathematical symbols
+}% matches Subscripts
+}% matches Abbreviations
+}% matches Greek Symbols
+}% matches Roman Symbols
+\renewcommand{\nompreamble}{\markboth{Nomenclature}{Nomenclature}}
+\def\nompreamble{\addcontentsline{toc}{chapter}{\nomname}\markboth{\nomname}{\nomname}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\singlespacing
+
+\include{FrontMatter/FrontMatter}
+
+\doublespacing
+
+\include{Chapter1/Chapter1}
+
+\include{Chapter2/Chapter2}
+
+\renewcommand\bibname{References}
+
+\bibliographystyle{model1-num-names}
+\bibliography{mylibrary}
+
+
+\appendix
+
+\chapter{Appendix Title}
+
+Your content goes here .......
+\end{document}
